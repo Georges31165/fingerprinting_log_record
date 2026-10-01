@@ -1,0 +1,14 @@
+[project]
+name = "fingerprinting-log-record"
+version = "0.1.0"
+description = "A logging.Filter that computes a stable hash of message plus level, attaching it so downstream deduplication can group identical events."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
