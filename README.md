@@ -29,3 +29,10 @@ The trade-off: the fingerprint ignores logger name, timestamp, exception info, a
 ## Edge case
 
 If `record.getMessage()` raises (for example, a malformed format string or bad argument count), the filter does **not** propagate the exception. It falls back to hashing the raw `msg` and continues. This is deliberate: a logging filter that raises will silently drop records or break handlers, which is worse than a missing fingerprint. The cost is that two malformed records with the same raw template hash identically even if their arguments differ.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
