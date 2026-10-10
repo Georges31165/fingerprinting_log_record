@@ -1,6 +1,6 @@
 [project]
 name = "fingerprinting-log-record"
-version = "0.1.0"
+version = "0.1.1"
 description = "A logging.Filter that computes a stable hash of message plus level, attaching it so downstream deduplication can group identical events."
 requires-python = ">=3.10"
 dependencies = []
